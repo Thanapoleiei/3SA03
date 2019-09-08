@@ -1,29 +1,58 @@
-import React,{Component} from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Content from './Content';
-import CharacterCard from './CharacterCard';
+import React from 'react'
+import CharacterCard from './Character'
+import './App.css'
+import { throwStatement } from '@babel/types';
+import _ from 'lodash';
+const word = "Hello";
 
-class App extends Component {
-  render() {
-  return (
-  <div className="App">
-  Hello World
-  <CharacterCard value="h"/>
- <CharacterCard value="i"/>
-  </div>
-  );
-  }
+const prepareStateFromWord = (given_word) => {
+ let word = given_word.toUpperCase()
+ let chars = _.shuffle(Array.from(word))
+ return {
+ word,
+ chars,
+ attempt: 1,
+ guess: [],
+ completed: false
  }
-//  class App extends Component {
-//   render() {
-//   return (
-//   <div>
-//   <CharacterCard value="h"/>
-//  <CharacterCard value="i"/>
-//   </div>
-//   );
-//   }
-//  }
- 
+}
+
+class App extends React.Component {
+  state = prepareStateFromWord(word);
+  activationHandler = (c) => {
+    let guess = [...this.state.guess, c]
+    this.setState({guess})
+    if(guess.length == this.state.chars.length){
+    if(guess.join('').toString() == this.state.word){
+    this.setState({guess: [], completed: true})
+    }else{
+    this.setState({guess: [], attempt: this.state.attempt + 1})
+    }
+    }
+   }
+   
+  render() {
+    return (
+      <div>
+        {
+        Array.from(this.state.chars).map((item,index)=>(
+
+          <CharacterCard
+          value={item}
+          key={index}
+          activationHandler={this.activationHandler}
+          />
+        ))
+        }
+      <div>Attemp {this.state.attempt}</div>
+      {
+        this.state.completed && <h4>Complete</h4>
+      }
+        {/* {Array.from(word).map((c, i) => <CharacterCard value={c} key={i} />)}
+        {Array.from(x).map((c, i) => <CharacterCard value={c} key={i} />)} */}
+      </div>
+    );
+  }
+}
+
 export default App;
