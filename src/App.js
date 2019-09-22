@@ -49,13 +49,7 @@ class App extends React.Component {
           />
         ))
         }
-      {/* <div>Attemp {this.state.attempt}</div>
-      {
-        this.state.completed && <h4>Complete</h4>
-      } */}
-        {/* {Array.from(word).map((c, i) => <CharacterCard value={c} key={i} />)}
-        {Array.from(x).map((c, i) => <CharacterCard value={c} key={i} />)} */}
-      {/* </div> */}
+     
       <div>Attemp {this.state.attempt}</div>
         <h4>{Completee}{Completeee}</h4>
         </div>
