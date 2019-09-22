@@ -30,8 +30,12 @@ class App extends React.Component {
     }
     }
    }
-   
+   reseted = () => {
+    this.setState({ completed: false ,attempt: this.state.attempt + 1,})
+   }
   render() {
+    let Completee = this.state.completed === true ? <h2>Complete </h2> : '';
+    let Completeee = this.state.completed === true ? <h2 onClick={this.reseted}>เล่นอีกครั้ง </h2> : '';
     return (
       <div>
         {
@@ -40,17 +44,21 @@ class App extends React.Component {
           <CharacterCard
           value={item}
           key={index}
+          attempt={this.state.attempt}
           activationHandler={this.activationHandler}
           />
         ))
         }
-      <div>Attemp {this.state.attempt}</div>
+      {/* <div>Attemp {this.state.attempt}</div>
       {
         this.state.completed && <h4>Complete</h4>
-      }
+      } */}
         {/* {Array.from(word).map((c, i) => <CharacterCard value={c} key={i} />)}
         {Array.from(x).map((c, i) => <CharacterCard value={c} key={i} />)} */}
-      </div>
+      {/* </div> */}
+      <div>Attemp {this.state.attempt}</div>
+        <h4>{Completee}{Completeee}</h4>
+        </div>
     );
   }
 }

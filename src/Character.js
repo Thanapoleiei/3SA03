@@ -5,6 +5,11 @@ export default class CharacterCard extends React.Component {
     state = {
         active: false
     }
+    componentDidUpdate(prevProps){
+        if(prevProps.attempt != this.props.attempt){
+        this.setState({active: false})
+        }
+       }
 
     activate = () => {
         if(this.state.active==false){
