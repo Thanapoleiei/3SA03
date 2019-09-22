@@ -34,8 +34,8 @@ class App extends React.Component {
     this.setState({ completed: false ,round: this.state.round + 1,})
    }
   render() {
-    let Completee = this.state.completed === true ? <h2>Complete </h2> : '';
-    let Completeee = this.state.completed === true ? <h4 class='card' onClick={this.reseted}>PLAY AGIAN </h4> : '';
+    let Completee = this.state.completed === true ? <h2 class='Back'>Complete </h2> : '';
+    let Completeee = this.state.completed === true ? <h4 class='again' onClick={this.reseted}>PLAY AGIAN </h4> : '';
     return (
       <div>
         {
