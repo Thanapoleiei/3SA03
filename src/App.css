@@ -14,10 +14,9 @@
 }
 .Back{
     
-    color:rgba(204, 0, 0, 0.932);
-    
-    
-  
+    color:rgba(204, 0, 102, 0.932);
+    font-size: 2em;
+    width: 3em;
   }
   .again {
     display: inline-block;
