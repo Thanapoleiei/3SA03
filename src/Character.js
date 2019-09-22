@@ -6,10 +6,13 @@ export default class CharacterCard extends React.Component {
         active: false
     }
     componentDidUpdate(prevProps){
-        if(prevProps.attempt != this.props.attempt){
+        if(prevProps.round != this.props.round){
         this.setState({active: false})
         }
        }
+
+
+
 
     activate = () => {
         if(this.state.active==false){

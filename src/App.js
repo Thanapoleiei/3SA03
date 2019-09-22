@@ -11,7 +11,7 @@ const prepareStateFromWord = (given_word) => {
  return {
  word,
  chars,
- attempt: 1,
+ round: 1,
  guess: [],
  completed: false
  }
@@ -26,12 +26,12 @@ class App extends React.Component {
     if(guess.join('').toString() == this.state.word){
     this.setState({guess: [], completed: true})
     }else{
-    this.setState({guess: [], attempt: this.state.attempt + 1})
+    this.setState({guess: [], round: this.state.round + 1})
     }
     }
    }
    reseted = () => {
-    this.setState({ completed: false ,attempt: this.state.attempt + 1,})
+    this.setState({ completed: false ,round: this.state.round + 1,})
    }
   render() {
     let Completee = this.state.completed === true ? <h2>Complete </h2> : '';
@@ -44,13 +44,13 @@ class App extends React.Component {
           <CharacterCard
           value={item}
           key={index}
-          attempt={this.state.attempt}
+          round={this.state.round}
           activationHandler={this.activationHandler}
           />
         ))
         }
      
-      <div>Attemp {this.state.attempt}</div>
+      <div>Round {this.state.round}</div>
         <h4>{Completee}{Completeee}</h4>
         </div>
     );
