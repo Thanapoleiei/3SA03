@@ -35,7 +35,7 @@ class App extends React.Component {
    }
   render() {
     let Completee = this.state.completed === true ? <h2>Complete </h2> : '';
-    let Completeee = this.state.completed === true ? <h4 onClick={this.reseted}>เล่นอีกครั้ง </h4> : '';
+    let Completeee = this.state.completed === true ? <h4 onClick={this.reseted}>PLAY AGIAN </h4> : '';
     return (
       <div>
         {
